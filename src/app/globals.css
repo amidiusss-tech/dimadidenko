@@ -1,0 +1,250 @@
+@import "tailwindcss";
+
+/* Smoothly interpolating colors for a very slow ambient background drift */
+@property --ambient-bloom {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgba(115, 95, 255, 0.09);
+}
+
+@property --ambient-floor {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgba(255, 185, 120, 0.045);
+}
+
+@keyframes ambient-slow-shift {
+  0% {
+    --ambient-bloom: rgba(108, 92, 231, 0.1);
+    --ambient-floor: rgba(255, 175, 130, 0.048);
+  }
+  50% {
+    --ambient-bloom: rgba(52, 175, 205, 0.085);
+    --ambient-floor: rgba(255, 210, 165, 0.042);
+  }
+  100% {
+    --ambient-bloom: rgba(142, 105, 220, 0.095);
+    --ambient-floor: rgba(255, 155, 115, 0.046);
+  }
+}
+
+:root {
+  color-scheme: dark;
+  /* Deep neutral base — “velvet cinema”, not rainbow */
+  --bg-0: #06070b;
+  --bg-1: #0b0d14;
+  --bg-2: #101322;
+  --bg-bloom: rgba(115, 95, 255, 0.09);
+  --bg-floor: rgba(255, 185, 120, 0.045);
+  --text-0: #f4f4f5;
+  --text-1: #d4d4d8;
+  --line-soft: rgba(255, 255, 255, 0.12);
+
+  /* Fluid type scale */
+  --apple-display: clamp(2.25rem, 1.2rem + 3.8vw, 3.75rem);
+  --apple-title: clamp(1.65rem, 1rem + 2.2vw, 2.35rem);
+  --apple-lead: clamp(1.05rem, 0.95rem + 0.35vw, 1.2rem);
+  --apple-body: clamp(0.95rem, 0.9rem + 0.2vw, 1.0625rem);
+  --apple-eyebrow: clamp(0.65rem, 0.6rem + 0.15vw, 0.75rem);
+}
+
+.apple-display {
+  font-size: var(--apple-display);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.apple-title {
+  font-size: var(--apple-title);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+.apple-lead {
+  font-size: var(--apple-lead);
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+
+.apple-body {
+  font-size: var(--apple-body);
+  line-height: 1.5;
+}
+
+.apple-eyebrow {
+  font-size: var(--apple-eyebrow);
+  line-height: 1.3;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Brand buttons with guaranteed contrast on light backgrounds */
+.btn-light-solid {
+  background: linear-gradient(180deg, #ffffff 0%, #f4f4f5 100%);
+  color: #09090b !important;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    0 10px 24px rgba(0, 0, 0, 0.28);
+}
+
+.btn-light-solid:hover {
+  filter: brightness(0.96);
+}
+
+.btn-glass {
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.12);
+  color: #f8fafc;
+}
+
+.brand-accent-line {
+  position: relative;
+}
+
+.brand-accent-line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  height: 2px;
+  width: min(220px, 35%);
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.95), rgba(168, 85, 247, 0.95));
+  border-radius: 999px;
+}
+
+/* Section heading — red accent bar under title */
+.section-accent-line-red {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.65rem;
+}
+
+.section-accent-line-red::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: min(200px, 72%);
+  background: linear-gradient(90deg, #f87171 0%, #dc2626 55%, #991b1b 100%);
+  border-radius: 999px;
+  box-shadow: 0 0 18px rgba(248, 113, 113, 0.35);
+}
+
+/* Scroll reveal (IntersectionObserver toggles .reveal-io--visible) */
+.reveal-io {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  transition:
+    opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-io--cinematic {
+  transform: translate3d(0, 28px, 0) scale(0.975);
+  transition:
+    opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-io--visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-io,
+  .reveal-io--visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+
+  body {
+    animation: none;
+    --ambient-bloom: var(--bg-bloom);
+    --ambient-floor: var(--bg-floor);
+  }
+
+  body::after {
+    opacity: 0;
+  }
+}
+
+body {
+  min-height: 100vh;
+  --ambient-bloom: rgba(115, 95, 255, 0.09);
+  --ambient-floor: rgba(255, 185, 120, 0.045);
+  animation: ambient-slow-shift 140s ease-in-out infinite alternate;
+  background-color: var(--bg-0);
+  background-image:
+    radial-gradient(ellipse 130% 85% at 50% -25%, var(--ambient-bloom), transparent 58%),
+    radial-gradient(ellipse 125% 80% at 50% 118%, var(--ambient-floor), transparent 55%),
+    linear-gradient(180deg, var(--bg-2) 0%, var(--bg-1) 42%, var(--bg-0) 100%);
+  color: var(--text-0);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", "Segoe UI", Arial, Helvetica,
+    sans-serif;
+  letter-spacing: 0.01em;
+}
+
+/* Soft edge darkening — keeps center “expensive” and readable */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 96% 92% at 50% 46%, transparent 42%, rgba(0, 0, 0, 0.3) 100%);
+  opacity: 0.72;
+}
+
+/* Micro film grain — reads as texture, not decoration */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(59, 130, 246, 0.35);
+}
+
+.album-state-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.album-state-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 20% 25%, rgba(255, 255, 255, 0.22) 0 4px, transparent 5px),
+    radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.18) 0 5px, transparent 6px);
+  background-size: 160px 160px, 220px 220px;
+  animation: bubbles 8s linear infinite;
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+@keyframes bubbles {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: -140px -120px, 90px -100px;
+  }
+}
