@@ -1,3 +1,4 @@
+import { unstable_cache } from "next/cache";
 import { getSupabase } from "@/lib/supabase";
 import { isSupabaseConfigured } from "@/lib/supabase-config";
 import { demoReleases, type Release } from "@/data/releases";
@@ -168,12 +169,24 @@ async function fetchReleasesFromSupabase(): Promise<Release[]> {
   });
 }
 
+const getCachedTracksFromSupabase = unstable_cache(
+  async () => fetchTracksFromSupabase(),
+  ["music-catalog-tracks"],
+  { revalidate: 900, tags: ["tracks"] }
+);
+
+const getCachedReleasesFromSupabase = unstable_cache(
+  async () => fetchReleasesFromSupabase(),
+  ["music-catalog-releases"],
+  { revalidate: 900, tags: ["releases"] }
+);
+
 export async function getAllTracks(): Promise<Track[]> {
   if (!isSupabaseConfigured()) {
     return demoTracks;
   }
   try {
-    const tracks = await fetchTracksFromSupabase();
+    const tracks = await getCachedTracksFromSupabase();
     if (tracks.length === 0) {
       console.warn("[music-catalog] Supabase returned no tracks; using demo catalog.");
       return demoTracks;
@@ -195,7 +208,7 @@ export async function getReleasesForDisplay(): Promise<Release[]> {
     return demoReleases;
   }
   try {
-    const releases = await fetchReleasesFromSupabase();
+    const releases = await getCachedReleasesFromSupabase();
     if (releases.length === 0) {
       console.warn("[music-catalog] Supabase returned no releases; using demo releases.");
       return demoReleases;

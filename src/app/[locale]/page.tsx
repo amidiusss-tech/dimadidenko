@@ -1,9 +1,17 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { HeroShowreel } from "@/components/hero-showreel";
 import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import { getReleasesForDisplay } from "@/data/music-catalog";
-import { isLocale } from "@/i18n/config";
+import { isLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionary";
+
+/** ISR: refresh home catalog data periodically without hitting DB on every request. */
+export const revalidate = 3600;
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
 type LocaleHomeProps = {
   params: Promise<{ locale: string }>;
@@ -18,6 +26,7 @@ export default async function LocaleHomePage({ params }: LocaleHomeProps) {
 
   const copy = getDictionary(locale);
   const releases = await getReleasesForDisplay();
+  const showreelSrc = process.env.NEXT_PUBLIC_SHOWREEL_URL ?? "/video/showreel.mp4";
   const albumsTitle =
     locale === "ru"
       ? "Альбомы"
@@ -51,17 +60,12 @@ export default async function LocaleHomePage({ params }: LocaleHomeProps) {
     <div className="space-y-20 md:space-y-28">
       <RevealOnScroll>
         <section className="relative overflow-hidden rounded-[2.4rem] border border-white/15 bg-black shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
-        <video
-          className="h-[72vh] min-h-[460px] w-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster="/images/showreel-poster.jpg"
-        >
-          <source src="/video/showreel.mp4" type="video/mp4" />
-        </video>
+        <HeroShowreel
+          className="h-[72vh] min-h-[460px] w-full"
+          posterSrc="/images/showreel-poster.jpg"
+          videoSrc={showreelSrc}
+          playLabel={copy.home.playShowreel}
+        />
 
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/30" />
         <div className="absolute inset-x-0 bottom-0 z-10 p-8 md:p-12">

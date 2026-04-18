@@ -15,6 +15,7 @@ type HomeCopy = {
   viewLicenses: string;
   featured: string;
   seeAll: string;
+  playShowreel: string;
 };
 
 type CatalogCopy = {
@@ -98,7 +99,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       browseCatalog: "Browse catalog",
       viewLicenses: "View licenses",
       featured: "Featured tracks",
-      seeAll: "See all"
+      seeAll: "See all",
+      playShowreel: "Play showreel"
     },
     catalog: {
       title: "Catalog",
@@ -178,7 +180,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       browseCatalog: "Перейти в каталог",
       viewLicenses: "Посмотреть лицензии",
       featured: "Рекомендуемые треки",
-      seeAll: "Смотреть все"
+      seeAll: "Смотреть все",
+      playShowreel: "Включить шоурил"
     },
     catalog: {
       title: "Каталог",
@@ -258,7 +261,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       browseCatalog: "カタログを見る",
       viewLicenses: "ライセンスを見る",
       featured: "注目トラック",
-      seeAll: "すべて表示"
+      seeAll: "すべて表示",
+      playShowreel: "ショールールを再生"
     },
     catalog: {
       title: "カタログ",
@@ -338,7 +342,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       browseCatalog: "Katalog ansehen",
       viewLicenses: "Lizenzen ansehen",
       featured: "Empfohlene Tracks",
-      seeAll: "Alle anzeigen"
+      seeAll: "Alle anzeigen",
+      playShowreel: "Showreel abspielen"
     },
     catalog: {
       title: "Katalog",
@@ -406,7 +411,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       browseCatalog: "浏览曲库",
       viewLicenses: "查看授权",
       featured: "精选曲目",
-      seeAll: "查看全部"
+      seeAll: "查看全部",
+      playShowreel: "播放片头"
     },
     catalog: {
       title: "曲库",
@@ -469,7 +475,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       browseCatalog: "Ver catálogo",
       viewLicenses: "Ver licencias",
       featured: "Pistas destacadas",
-      seeAll: "Ver todo"
+      seeAll: "Ver todo",
+      playShowreel: "Ver showreel"
     },
     catalog: { title: "Catálogo", subtitle: "Encuentra pistas por mood, estilo y uso.", tagCloud: "Nube de etiquetas MVP (estática)" },
     track: {
@@ -521,7 +528,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       browseCatalog: "Voir le catalogue",
       viewLicenses: "Voir les licences",
       featured: "Titres en vedette",
-      seeAll: "Tout voir"
+      seeAll: "Tout voir",
+      playShowreel: "Lire le showreel"
     },
     catalog: { title: "Catalogue", subtitle: "Trouvez des titres par ambiance, style et usage.", tagCloud: "Nuage de tags MVP (statique)" },
     track: {
