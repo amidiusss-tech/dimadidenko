@@ -20,7 +20,13 @@ export function HomePodcastIsland({ copy, audioSrc, unsupportedText }: HomePodca
       </h2>
 
       <div className="mt-6 rounded-2xl border border-white/10 bg-black/35 p-4 md:p-5">
-        <audio key={audioSrc} controls preload="none" className="w-full accent-red-500">
+        <audio
+          key={audioSrc}
+          controls
+          controlsList="nodownload"
+          preload="none"
+          className="w-full accent-red-500"
+        >
           <source src={audioSrc} {...(mime ? { type: mime } : {})} />
           {unsupportedText}
         </audio>

@@ -22,6 +22,8 @@ type HomeCopy = {
   seeAll: string;
   playShowreel: string;
   podcast: HomePodcastCopy;
+  /** Home album cards: disabled button label (blur only on the button). */
+  albumsButtonSoon: string;
 };
 
 type CatalogCopy = {
@@ -110,7 +112,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       podcast: {
         title: "My music",
         tip: "Headphones give you the clearest mix."
-      }
+      },
+      albumsButtonSoon: "Coming soon"
     },
     catalog: {
       title: "Catalog",
@@ -195,7 +198,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       podcast: {
         title: "Моя музыка",
         tip: "Удобнее слушать в наушниках."
-      }
+      },
+      albumsButtonSoon: "Скоро будет доступно"
     },
     catalog: {
       title: "Каталог",
@@ -280,7 +284,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       podcast: {
         title: "マイミュージック",
         tip: "ヘッドフォンでの視聴をおすすめします。"
-      }
+      },
+      albumsButtonSoon: "近日公開"
     },
     catalog: {
       title: "カタログ",
@@ -365,7 +370,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       podcast: {
         title: "Meine Musik",
         tip: "Mit Kopfhörern klingt der Mix am klarsten."
-      }
+      },
+      albumsButtonSoon: "Demnächst verfügbar"
     },
     catalog: {
       title: "Katalog",
@@ -438,7 +444,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       podcast: {
         title: "我的音乐",
         tip: "建议使用耳机，层次更清晰。"
-      }
+      },
+      albumsButtonSoon: "即将推出"
     },
     catalog: {
       title: "曲库",
@@ -506,7 +513,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       podcast: {
         title: "Mi música",
         tip: "Con auriculares se escucha mejor el mezclado."
-      }
+      },
+      albumsButtonSoon: "Próximamente"
     },
     catalog: { title: "Catálogo", subtitle: "Encuentra pistas por mood, estilo y uso.", tagCloud: "Nube de etiquetas MVP (estática)" },
     track: {
@@ -563,7 +571,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       podcast: {
         title: "Ma musique",
         tip: "Le casque rend le mix plus net."
-      }
+      },
+      albumsButtonSoon: "Bientôt disponible"
     },
     catalog: { title: "Catalogue", subtitle: "Trouvez des titres par ambiance, style et usage.", tagCloud: "Nuage de tags MVP (statique)" },
     track: {
