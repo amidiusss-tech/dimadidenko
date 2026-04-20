@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { HeroShowreel } from "@/components/hero-showreel";
+import { HomePodcastIsland } from "@/components/home-podcast-island";
 import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import { getReleasesForDisplay } from "@/data/music-catalog";
 import { isLocale, locales } from "@/i18n/config";
+import { getPodcastAudioSrc } from "@/lib/podcast-audio";
 import { getDictionary } from "@/i18n/dictionary";
 
 /** ISR: refresh home catalog data periodically without hitting DB on every request. */
@@ -27,6 +29,7 @@ export default async function LocaleHomePage({ params }: LocaleHomeProps) {
   const copy = getDictionary(locale);
   const releases = await getReleasesForDisplay();
   const showreelSrc = process.env.NEXT_PUBLIC_SHOWREEL_URL ?? "/video/showreel.mp4";
+  const podcastSrc = getPodcastAudioSrc(locale);
   const albumsTitle =
     locale === "ru"
       ? "Альбомы"
@@ -64,7 +67,7 @@ export default async function LocaleHomePage({ params }: LocaleHomeProps) {
           className="h-[72vh] min-h-[460px] w-full"
           posterSrc="/images/showreel-poster.jpg"
           videoSrc={showreelSrc}
-          playLabel={copy.home.playShowreel}
+          accessibleName={copy.home.playShowreel}
         />
 
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/30" />
@@ -88,6 +91,10 @@ export default async function LocaleHomePage({ params }: LocaleHomeProps) {
           </div>
         </div>
       </section>
+      </RevealOnScroll>
+
+      <RevealOnScroll delayMs={20} variant="cinematic">
+        <HomePodcastIsland copy={copy.home.podcast} audioSrc={podcastSrc} unsupportedText={copy.common.audioUnsupported} />
       </RevealOnScroll>
 
       <RevealOnScroll delayMs={40} variant="cinematic">

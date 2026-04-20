@@ -7,6 +7,11 @@ type HeaderCopy = {
   about: string;
 };
 
+type HomePodcastCopy = {
+  title: string;
+  tip: string;
+};
+
 type HomeCopy = {
   kicker: string;
   title: string;
@@ -16,6 +21,7 @@ type HomeCopy = {
   featured: string;
   seeAll: string;
   playShowreel: string;
+  podcast: HomePodcastCopy;
 };
 
 type CatalogCopy = {
@@ -100,7 +106,11 @@ export const dictionary: Record<Locale, Dictionary> = {
       viewLicenses: "View licenses",
       featured: "Featured tracks",
       seeAll: "See all",
-      playShowreel: "Play showreel"
+      playShowreel: "Play showreel",
+      podcast: {
+        title: "My music",
+        tip: "Headphones give you the clearest mix."
+      }
     },
     catalog: {
       title: "Catalog",
@@ -181,7 +191,11 @@ export const dictionary: Record<Locale, Dictionary> = {
       viewLicenses: "Посмотреть лицензии",
       featured: "Рекомендуемые треки",
       seeAll: "Смотреть все",
-      playShowreel: "Включить шоурил"
+      playShowreel: "Включить шоурил",
+      podcast: {
+        title: "Моя музыка",
+        tip: "Удобнее слушать в наушниках."
+      }
     },
     catalog: {
       title: "Каталог",
@@ -262,7 +276,11 @@ export const dictionary: Record<Locale, Dictionary> = {
       viewLicenses: "ライセンスを見る",
       featured: "注目トラック",
       seeAll: "すべて表示",
-      playShowreel: "ショールールを再生"
+      playShowreel: "ショールールを再生",
+      podcast: {
+        title: "マイミュージック",
+        tip: "ヘッドフォンでの視聴をおすすめします。"
+      }
     },
     catalog: {
       title: "カタログ",
@@ -343,7 +361,11 @@ export const dictionary: Record<Locale, Dictionary> = {
       viewLicenses: "Lizenzen ansehen",
       featured: "Empfohlene Tracks",
       seeAll: "Alle anzeigen",
-      playShowreel: "Showreel abspielen"
+      playShowreel: "Showreel abspielen",
+      podcast: {
+        title: "Meine Musik",
+        tip: "Mit Kopfhörern klingt der Mix am klarsten."
+      }
     },
     catalog: {
       title: "Katalog",
@@ -412,7 +434,11 @@ export const dictionary: Record<Locale, Dictionary> = {
       viewLicenses: "查看授权",
       featured: "精选曲目",
       seeAll: "查看全部",
-      playShowreel: "播放片头"
+      playShowreel: "播放片头",
+      podcast: {
+        title: "我的音乐",
+        tip: "建议使用耳机，层次更清晰。"
+      }
     },
     catalog: {
       title: "曲库",
@@ -476,7 +502,11 @@ export const dictionary: Record<Locale, Dictionary> = {
       viewLicenses: "Ver licencias",
       featured: "Pistas destacadas",
       seeAll: "Ver todo",
-      playShowreel: "Ver showreel"
+      playShowreel: "Ver showreel",
+      podcast: {
+        title: "Mi música",
+        tip: "Con auriculares se escucha mejor el mezclado."
+      }
     },
     catalog: { title: "Catálogo", subtitle: "Encuentra pistas por mood, estilo y uso.", tagCloud: "Nube de etiquetas MVP (estática)" },
     track: {
@@ -529,7 +559,11 @@ export const dictionary: Record<Locale, Dictionary> = {
       viewLicenses: "Voir les licences",
       featured: "Titres en vedette",
       seeAll: "Tout voir",
-      playShowreel: "Lire le showreel"
+      playShowreel: "Lire le showreel",
+      podcast: {
+        title: "Ma musique",
+        tip: "Le casque rend le mix plus net."
+      }
     },
     catalog: { title: "Catalogue", subtitle: "Trouvez des titres par ambiance, style et usage.", tagCloud: "Nuage de tags MVP (statique)" },
     track: {
