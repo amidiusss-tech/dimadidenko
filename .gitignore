@@ -22,8 +22,5 @@ pnpm-debug.log*
 # vercel
 .vercel
 
-# Large video over GitHub 100 MB file limit — host on CDN / Vercel Blob / storage and keep path or update page
-/public/video/*.mp4
-
 # typescript
 *.tsbuildinfo

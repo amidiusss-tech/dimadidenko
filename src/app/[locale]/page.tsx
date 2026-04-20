@@ -6,6 +6,7 @@ import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import { getReleasesForDisplay } from "@/data/music-catalog";
 import { isLocale, locales } from "@/i18n/config";
 import { getPodcastAudioSrc } from "@/lib/podcast-audio";
+import { getShowreelSrc } from "@/lib/showreel";
 import { getDictionary } from "@/i18n/dictionary";
 
 /** ISR: refresh home catalog data periodically without hitting DB on every request. */
@@ -28,7 +29,7 @@ export default async function LocaleHomePage({ params }: LocaleHomeProps) {
 
   const copy = getDictionary(locale);
   const releases = await getReleasesForDisplay();
-  const showreelSrc = process.env.NEXT_PUBLIC_SHOWREEL_URL ?? "/video/showreel.mp4";
+  const showreelSrc = getShowreelSrc();
   const podcastSrc = getPodcastAudioSrc(locale);
   const albumsTitle =
     locale === "ru"
