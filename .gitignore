@@ -26,7 +26,6 @@ pnpm-debug.log*
 /public/downloads/*.exe
 /public/downloads/*.pkg
 /public/downloads/*.deb
-!/public/downloads/Extreme_Saturator_Setup_1.0.0.exe
 
 # typescript
 *.tsbuildinfo

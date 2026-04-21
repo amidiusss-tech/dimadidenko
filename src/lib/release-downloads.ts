@@ -1,5 +1,5 @@
 /** Must match the filename you ship (Inno Setup output / CDN object). */
-export const WINDOWS_INSTALLER_FILENAME = "Extreme_Saturator_Setup_1.0.0.exe";
+export const WINDOWS_INSTALLER_FILENAME = "Extreme_Saturator_Setup_1.1.0.exe";
 
 /**
  * Windows installer link for the Soft page.

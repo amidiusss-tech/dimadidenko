@@ -64,7 +64,7 @@ const copyByLocale = {
     downloadsTitle: "Downloads",
     downloadsLead: "Platform builds, one matrix. Windows ships now; macOS and Linux are queued next.",
     downloadsSlug: "EXTREME_SATURATOR",
-    downloadsBuild: "v1.0.0 · win-x64",
+    downloadsBuild: "v1.1.0 · win-x64",
     windowsLabel: "Windows",
     macosLabel: "macOS",
     linuxLabel: "Linux",
@@ -74,6 +74,8 @@ const copyByLocale = {
     comingSoon: "Soon",
     downloadCta: "Get build",
     featuresTitle: "Features",
+    uiTitle: "Interface",
+    uiAlt: "Extreme Saturator plugin interface.",
     supportLabel: "Support & suggestions:"
   },
   ru: {
@@ -90,7 +92,7 @@ const copyByLocale = {
     downloadsTitle: "Загрузки",
     downloadsLead: "Сборки по платформам в одном месте. Сейчас доступен Windows; macOS и Linux — следующими в очереди.",
     downloadsSlug: "EXTREME_SATURATOR",
-    downloadsBuild: "v1.0.0 · win-x64",
+    downloadsBuild: "v1.1.0 · win-x64",
     windowsLabel: "Windows",
     macosLabel: "macOS",
     linuxLabel: "Linux",
@@ -100,6 +102,8 @@ const copyByLocale = {
     comingSoon: "Скоро",
     downloadCta: "Скачать сборку",
     featuresTitle: "Возможности",
+    uiTitle: "Интерфейс",
+    uiAlt: "Интерфейс плагина Extreme Saturator.",
     supportLabel: "Поддержка и предложения:"
   }
 } as const;
@@ -120,6 +124,20 @@ export default async function SoftPage({ params }: SoftPageProps) {
         <p className="text-sm uppercase tracking-[0.18em] text-zinc-400">{copy.title}</p>
         <h1 className="apple-title font-semibold text-zinc-100">{copy.subtitle}</h1>
         <p className="apple-lead max-w-3xl text-zinc-300/90">{copy.description}</p>
+      </section>
+
+      <section className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 sm:p-6">
+        <h2 className="text-xl font-semibold text-zinc-100">{copy.uiTitle}</h2>
+        <div className="relative mt-4 aspect-[760/420] w-full max-w-4xl overflow-hidden rounded-xl border border-white/[0.1] bg-zinc-950/60 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
+          <Image
+            src="/soft/extreme-saturator-ui.png"
+            alt={copy.uiAlt}
+            fill
+            className="object-contain object-center"
+            sizes="(max-width: 768px) 100vw, 896px"
+            priority
+          />
+        </div>
       </section>
 
       <section className="rounded-2xl border border-white/10 bg-white/[0.04] p-6">
