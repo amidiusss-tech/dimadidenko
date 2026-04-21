@@ -22,5 +22,11 @@ pnpm-debug.log*
 # vercel
 .vercel
 
+# Windows / macOS / Linux installers (copy into public/downloads for deploy, or use CDN URL in env)
+/public/downloads/*.exe
+/public/downloads/*.pkg
+/public/downloads/*.deb
+!/public/downloads/Extreme_Saturator_Setup_1.0.0.exe
+
 # typescript
 *.tsbuildinfo

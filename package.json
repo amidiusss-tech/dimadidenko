@@ -10,7 +10,8 @@
     "build": "next build",
     "start": "next start",
     "start:fresh": "npm run clean && npm run build && next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "release:copy-win-installer": "node ./scripts/copy-windows-installer.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.8",

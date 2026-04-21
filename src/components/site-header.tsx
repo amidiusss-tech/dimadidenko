@@ -10,6 +10,7 @@ type SiteHeaderProps = {
 
 export function SiteHeader({ locale, copy }: SiteHeaderProps) {
   const links = [
+    { href: `/${locale}/soft`, label: "Soft" },
     { href: `/${locale}/catalog`, label: copy.header.catalog },
     { href: `/${locale}/licensing`, label: copy.header.licensing },
     { href: `/${locale}/custom-score`, label: copy.header.customScore },
